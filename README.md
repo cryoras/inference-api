@@ -50,7 +50,7 @@ This API provides two endpoints for text and image classification.
   {
     "message": "Image downloaded",
     "filepath": "path/to/saved/image",
-    "valid": 1  // 1 for valid, 0 for invalid
+    "valid": 1  // 1 for invalid, 0 for valid
   }
   ```
 - **Error Responses:**

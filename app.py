@@ -16,8 +16,6 @@ v1_image_model = load_model('./src/v1_model.keras')
 cleaner_thread = threading.Thread(target=clean_old_files, daemon=True)
 cleaner_thread.start()
 
-
-
 @app.route('/v1_text', methods=['POST'])
 def v1_text():
     data = request.get_json()
@@ -31,7 +29,6 @@ def v1_text():
     if not isinstance(x_predict, str):
         return jsonify({"error": "Input harus berupa string"}), 400
     
-
     try:
         x_clean = cleaningText(x_predict)
         x_case = caseFold(x_clean)
@@ -48,6 +45,7 @@ def v1_text():
         print(f"Error: {e}")
         return jsonify({"error": str(e)}), 500  # Internal Server Error
 
+
 @app.route('/v1_image', methods=['POST'])
 def v1_image():
     data = request.get_json()
@@ -63,8 +61,8 @@ def v1_image():
         filepath,status = download_image(image_link, filename)
         img = preprocess_image(filepath)
         pred = v1_image_model.predict(img)
-        img_pred = 1 if pred[0][0] > 0.5 else 0
-        print("Kelas yang diprediksi:", img_pred)
+        img_pred = 0 if pred[0][0] > 0.5 else 1
+        print("Kelas yang diprediksi:", pred[0][0])
         if filepath:
             return jsonify({"message": "Image downloaded", "filepath": filepath,"valid":img_pred})
     except Exception as e:
