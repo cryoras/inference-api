@@ -1,4 +1,4 @@
-# API Documentation
+# API Documentation version 1.0.0
 
 ## Overview
 This API provides two endpoints for text and image classification.
