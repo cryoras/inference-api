@@ -61,7 +61,7 @@ def v1_image():
         filepath,status = download_image(image_link, filename)
         img = preprocess_image(filepath)
         pred = v1_image_model.predict(img)
-        img_pred = 0 if pred[0][0] > 0.5 else 1
+        img_pred = 1 if pred[0][0] > 0.5 else 0
         print("Kelas yang diprediksi:", pred[0][0])
         if filepath:
             return jsonify({"message": "Image downloaded", "filepath": filepath,"valid":img_pred})
