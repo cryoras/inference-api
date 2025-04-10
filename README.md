@@ -75,7 +75,7 @@ This API provides two endpoints for text and image classification.
 ## Usage Example
 ### Text Classification
 ```bash
-curl -X POST http://localhost:5000/v1_text \
+curl -X POST http://localhost:5000/v2_text \
   -H "Content-Type: application/json" \
   -d '{"predict": "your text here"}'
 ```

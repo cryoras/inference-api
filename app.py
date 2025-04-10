@@ -8,7 +8,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 # load model
-v1_text_model = joblib.load('./src/v1_text.joblib')
+v1_text_model = joblib.load('./src/v2_text.joblib')
 app = Flask(__name__)
 
 v1_image_model = load_model('./src/v1_model.keras')
@@ -17,7 +17,7 @@ cleaner_thread = threading.Thread(target=clean_old_files, daemon=True)
 cleaner_thread.start()
 
 # define route
-@app.route('/v1_text', methods=['POST'])
+@app.route('/v2_text', methods=['POST'])
 def v1_text():
     data = request.get_json()
     if not data:
